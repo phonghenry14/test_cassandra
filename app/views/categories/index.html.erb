@@ -1,0 +1,21 @@
+<%= link_to "Create new category", new_category_path %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Descreption</th>
+        <th>id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |f| %>
+        <tr>
+          <td><%= link_to f.name, category_path(f) %></td>
+          <td><%= f.description %></td>
+          <td><%= f.id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

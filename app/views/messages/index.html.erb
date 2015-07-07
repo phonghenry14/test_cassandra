@@ -1,0 +1,23 @@
+<%= link_to "Create new messages", new_message_path %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Content</th>
+        <th>Created_at</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @messages.each do |f| %>
+        <tr>
+          <td><%= link_to f.content, message_path(f) %></td>
+          <td><%= f.created_at %></td>
+          <td>
+            <%= link_to Category.find_by_id(f.category_id).name, category_path(Category.find_by_id(f.category_id)) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

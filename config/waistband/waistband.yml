@@ -1,0 +1,9 @@
+development:
+  retries: 5
+  timeout: 2
+  reload_on_failure: true
+  servers:
+    server1:
+      protocol: http
+      host: localhost
+      port: 9200

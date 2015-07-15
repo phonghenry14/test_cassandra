@@ -1,6 +1,10 @@
 class MessagesController < ActionController::Base
   def index
-    @messages = Message.all
+    if params[:query].present?
+      @messages = Message.search_with_elastic params[:query]
+    else
+      @messages = Message.all
+    end
   end
 
   def show

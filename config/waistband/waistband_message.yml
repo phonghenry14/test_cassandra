@@ -1,0 +1,22 @@
+development:
+  stringify: false
+  settings:
+    index:
+      number_of_shards: 4
+      number_of_replicas: 1
+      analysis:
+        analyzer:
+          default:
+            type: snowball
+  mappings:
+    message:
+      _source:
+        includes: ["*"]
+      properties:
+        content:
+          type: string
+          index: not_analyzed
+        category:
+          type: string
+          index: not_analyzed
+          store: true

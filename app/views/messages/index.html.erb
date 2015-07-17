@@ -1,20 +1,25 @@
 <%= link_to "Create new messages", new_message_path %>
 <div class="table-responsive">
+  <div>
+    <%= form_tag "/messages", method: :get, class: "form-inline" do %>
+      <label for="content">Content or Category</label>
+      <%= text_field_tag("query", params[:query]) %></br>
+      <%= submit_tag "Search", class: "btn btn-info" %>
+    <% end %>
+  </div>
   <table class="table">
     <thead>
       <tr>
         <th>Content</th>
-        <th>Created_at</th>
         <th>Category</th>
       </tr>
     </thead>
     <tbody>
-      <% @messages.each do |f| %>
+      <% @messages.each do |message| %>
         <tr>
-          <td><%= link_to f.content, message_path(f) %></td>
-          <td><%= f.created_at %></td>
+          <td><%= message.content %></td>
           <td>
-            <%= link_to Category.find_by_id(f.category_id).name, category_path(Category.find_by_id(f.category_id)) %>
+            <%= Category.find_by_id(message.category_id || message._id).name %>
           </td>
         </tr>
       <% end %>

@@ -13,8 +13,8 @@
         <td><%= @category.name %></td>
         <td><%= @category.description %></td>
         <td>
-          <%= @messages.each do |f| %>
-            <%= f.content %><br>
+          <%= @messages.each do |message| %>
+            <%= message.content %><br>
           <% end %>
         </td>
       </tr>

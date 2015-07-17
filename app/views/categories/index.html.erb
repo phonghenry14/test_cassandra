@@ -1,4 +1,4 @@
-<%= link_to "Create new category", new_category_path %>
+<%= link_to "Create new category", new_category_path, class: "btn btn-primary" %></br></br>
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -9,11 +9,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @categories.each do |f| %>
+      <% @categories.each do |category| %>
         <tr>
-          <td><%= link_to f.name, category_path(f) %></td>
-          <td><%= f.description %></td>
-          <td><%= f.id %></td>
+          <td><%= link_to category.name, category_path(category) %></td>
+          <td><%= category.description %></td>
+          <td><%= category.id %></td>
         </tr>
       <% end %>
     </tbody>

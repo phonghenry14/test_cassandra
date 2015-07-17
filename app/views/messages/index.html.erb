@@ -1,4 +1,4 @@
-<%= link_to "Create new messages", new_message_path %>
+<%= link_to "Create new messages", new_message_path, class: "btn btn-primary" %></br></br>
 <div class="table-responsive">
   <div>
     <%= form_tag "/messages", method: :get, class: "form-inline" do %>
@@ -19,7 +19,8 @@
         <tr>
           <td><%= message.content %></td>
           <td>
-            <%= Category.find_by_id(message.category_id || message._id).name %>
+            <%= link_to Category.find_by_id(message.category_id || message._id).name,
+              category_path(Category.find_by_id(message.category_id || message._id)) %>
           </td>
         </tr>
       <% end %>

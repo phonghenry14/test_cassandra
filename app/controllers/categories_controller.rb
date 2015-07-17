@@ -1,4 +1,4 @@
-class CategoriesController < ActionController::Base
+class CategoriesController < ApplicationController
   def index
     @categories = Category.all
   end
@@ -15,10 +15,10 @@ class CategoriesController < ActionController::Base
   def create
     @category = Category.new category_params
     if @category.save
-      flash[:success] = "success"
+      flash[:success] = "Create category successfully"
       redirect_to categories_path
     else
-      flash[:danger] = "fail"
+      flash[:danger] = "Create category failed"
       render :new
     end
   end

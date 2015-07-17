@@ -1,15 +1,10 @@
-class MessagesController < ActionController::Base
+class MessagesController < ApplicationController
   def index
     if params[:query].present?
       @messages = Message.search_with_elastic params[:query]
     else
       @messages = Message.all
     end
-  end
-
-  def show
-    @message = Message.find params[:id]
-    @category = Category.find_by_id(@message.category_id)
   end
 
   def new
@@ -19,10 +14,10 @@ class MessagesController < ActionController::Base
   def create
     @message = Message.new message_params
     if @message.save
-      flash[:success] = "success"
+      flash[:success] = "Create message successfully"
       redirect_to messages_path
     else
-      flash[:danger] = "fail"
+      flash[:danger] = "Create message failed"
       render :new
     end
   end

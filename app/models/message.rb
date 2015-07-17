@@ -6,6 +6,8 @@ class Message
   key :id, :timeuuid, auto: true, order: :desc
   column :content, :text
 
+  validates :content, presence: true
+
   after_create :add_index
 
   private

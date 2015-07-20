@@ -19,16 +19,20 @@
     <tbody>
       <% @messages.each do |message| %>
         <tr>
-          <td><%= message.content %></td>
           <td>
-            <%= link_to Category.find_by_id(message.category_id || message._id).name,
-              category_path(Category.find_by_id(message.category_id || message._id)) %>
+            <%= link_to message.content, message_path(id: message.id ||
+              message._id, category_id: message.category_id) %>
           </td>
-          <td><%= message.id %></td>
           <td>
-            <%= link_to "", edit_message_path(id: message.id, category_id: message.category_id || message._id),
+            <%= link_to Category.find_by_id(message.category_id).name,
+              category_path(Category.find_by_id(message.category_id)) %>
+          </td>
+          <td><%= message.id || message._id %></td>
+          <td>
+            <%= link_to "", edit_message_path(id: message.id || message._id,
+              category_id: message.category_id),
               class: "glyphicon glyphicon-edit" %>
-            <%= link_to "", message_path(id: message.id, category_id: message.category_id || message._id),
+            <%= link_to "", message_path(id: message.id || message._id, category_id: message.category_id),
               method: :delete, data: {confirm: "Are you sure?"},
               class: "glyphicon glyphicon-trash" %>
           </td>
@@ -36,4 +40,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @messages %>
 </div>

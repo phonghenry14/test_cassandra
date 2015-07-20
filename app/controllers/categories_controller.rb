@@ -2,7 +2,8 @@ class CategoriesController < ApplicationController
   before_action :set_category, except: [:index, :new, :create]
 
   def index
-    @categories = Category.all
+    @categories = Kaminari.paginate_array(Category.all.to_a).
+      page(params[:page]).per Settings.limits.category_lists
   end
 
   def show
@@ -22,9 +23,6 @@ class CategoriesController < ApplicationController
       flash[:danger] = "Create category failed"
       render :new
     end
-  end
-
-  def edit
   end
 
   def update

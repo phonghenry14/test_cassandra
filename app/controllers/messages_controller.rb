@@ -1,12 +1,14 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:edit, :update, :destroy]
+  before_action :set_message, except: [:index, :new, :create]
 
   def index
-    if params[:query].present?
-      @messages = Message.search_with_elastic params[:query]
-    else
-      @messages = Message.all
-    end
+    messages = params[:query].present? ? Message.search_with_elastic(params[:query]) : Message.all.to_a
+    @messages = Kaminari.paginate_array(messages).
+      page(params[:page]).per Settings.limits.message_lists
+  end
+
+  def show
+    @category = Category.find_by_id @message.category_id
   end
 
   def new
@@ -22,9 +24,6 @@ class MessagesController < ApplicationController
       flash[:danger] = "Create message failed"
       render :new
     end
-  end
-
-  def edit
   end
 
   def update

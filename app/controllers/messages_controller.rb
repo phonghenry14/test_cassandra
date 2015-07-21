@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
 
   def show
     @category = Category.find_by_id @message.category_id
+    @message.increase_pageview!
   end
 
   def new

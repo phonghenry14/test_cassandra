@@ -6,6 +6,7 @@
         <th>Content</th>
         <th>Category</th>
         <th>ID</th>
+        <th>Views</th>
         <th>Modify</th>
       </tr>
     </thead>
@@ -15,6 +16,7 @@
         <td><%= link_to @category.name, category_path(@category) %>
         </td>
         <td><%= @message.id %></td>
+        <td><%= @message.pageview %></td>
         <td>
           <%= link_to "", edit_message_path(id: @message.id, category_id: @message.category_id),
               class: "glyphicon glyphicon-edit" %>

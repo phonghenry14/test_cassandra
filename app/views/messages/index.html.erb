@@ -13,6 +13,7 @@
         <th>Content</th>
         <th>Category</th>
         <th>ID</th>
+        <th>Views</th>
         <th>Modify</th>
       </tr>
     </thead>
@@ -28,6 +29,7 @@
               category_path(Category.find_by_id(message.category_id)) %>
           </td>
           <td><%= message.id || message._id %></td>
+          <td><%= message.pageview %></td>
           <td>
             <%= link_to "", edit_message_path(id: message.id || message._id,
               category_id: message.category_id),

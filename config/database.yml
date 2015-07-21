@@ -12,6 +12,12 @@ default: &default
 development:
   <<: *default
   database: db/development.sqlite3
+  username: root
+  password: nhiepphong
+  redis: &redis_config
+    host: localhost
+    port: 6379
+    db: 0
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

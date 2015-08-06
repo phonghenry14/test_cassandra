@@ -31,6 +31,8 @@ gem "bootstrap-will_paginate", "0.0.10"
 gem "kaminari"
 gem "rails_config"
 gem "redis-rails"
+gem 'addressable', '~> 2.3.8'
+gem 'nokogiri', '~> 1.6.6.2'
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem 'pry-debugger'

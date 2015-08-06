@@ -1,0 +1,9 @@
+<div class="table-responsive">
+  <div>
+    <%= form_tag "/notes", method: :post, class: "form-inline" do %>
+      <label for="content">URL:</label>
+      <%= text_field_tag("url", params[:url]) %></br>
+      <%= submit_tag "Submit", class: "btn btn-info" %>
+    <% end %>
+  </div>
+</div>

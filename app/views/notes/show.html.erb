@@ -1,0 +1,17 @@
+<%= link_to "Create Note", new_note_path %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @note.title %></td>
+        <td><%= @note.description %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
